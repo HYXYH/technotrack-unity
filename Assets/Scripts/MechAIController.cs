@@ -85,16 +85,22 @@ public class MechAIController : MonoBehaviour {
 		}
 	}
 
+	private void ResetGui()
+	{
+		var gui = PoolManager.GetObject(_guiPrefab, Vector3.zero, Quaternion.identity).GetComponent<BotGui>();
+		gui.gameObject.SetActive(true);
+		gui.SetOwner(gameObject);
+		_mech.SetGui(gui);
+	}
+	
+
 	private void OnEnable()
 	{
 		if (_mech == null)
 		{
 			Start();
 		}
-		var gui = PoolManager.GetObject(_guiPrefab, Vector3.zero, Quaternion.identity).GetComponent<BotGui>();
-		gui.gameObject.SetActive(true);
-		gui.SetOwner(gameObject);
-		_mech.SetGui(gui);
+		ResetGui();
 	}
 	
 		private void OnDrawGizmos()

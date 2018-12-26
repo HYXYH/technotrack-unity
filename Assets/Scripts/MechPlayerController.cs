@@ -67,9 +67,8 @@ public class MechPlayerController : MonoBehaviour
         _mech.LookAt(newDir);
     }
 
-    private IEnumerator ResetGui()
+    private void ResetGui()
     {
-        yield return null;
         var gui = PoolManager
             .GetObject(_controlsGuiPrefab, _controlsGuiPrefab.transform.position, Quaternion.identity)
             .GetComponent<InGameGui>();
@@ -87,7 +86,7 @@ public class MechPlayerController : MonoBehaviour
             _camera.transform.localPosition = Vector3.zero;
             _camera.transform.localRotation = Quaternion.identity;
 
-            StartCoroutine(ResetGui());
+            ResetGui();
         }
     }
 
