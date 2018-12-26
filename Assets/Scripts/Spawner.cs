@@ -7,7 +7,7 @@ public class Spawner : MonoBehaviour
 	private Queue<GameObject> _queue = new Queue<GameObject>();
 	private Queue<float> _timeQueue = new Queue<float>();
 	private GameObject _currentObj = null;
-	private float _currentTime;
+	private float _currentSpawnTime;
 
 	public void Spawn(GameObject toSpawn)
 	{
@@ -20,10 +20,10 @@ public class Spawner : MonoBehaviour
 		if (_currentObj == null && _queue.Count > 0)
 		{
 			_currentObj = _queue.Dequeue();
-			_currentTime = _timeQueue.Dequeue();
+			_currentSpawnTime = _timeQueue.Dequeue();
 		}
 
-		if (_currentTime > Time.time && _currentObj != null)
+		if (_currentSpawnTime < Time.time && _currentObj != null)
 		{
 			_currentObj.SetActive(true);
 			_currentObj = null;

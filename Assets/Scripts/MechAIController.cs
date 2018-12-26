@@ -65,7 +65,7 @@ public class MechAIController : MonoBehaviour {
 			{
 				_mech.Fire(0);
 				_mech.Fire(1);
-
+				
 			}
 			
 			var newDir = Vector3.ProjectOnPlane(enemyDirection, this.transform.up).normalized;
@@ -85,19 +85,16 @@ public class MechAIController : MonoBehaviour {
 		}
 	}
 
-	private IEnumerator ResetGui()
+	private void OnEnable()
 	{
-		yield return null;
+		if (_mech == null)
+		{
+			Start();
+		}
 		var gui = PoolManager.GetObject(_guiPrefab, Vector3.zero, Quaternion.identity).GetComponent<BotGui>();
 		gui.gameObject.SetActive(true);
 		gui.SetOwner(gameObject);
 		_mech.SetGui(gui);
-	}
-
-
-	private void OnEnable()
-	{
-		StartCoroutine(ResetGui());
 	}
 	
 		private void OnDrawGizmos()
