@@ -23,8 +23,6 @@ GameObject:
   - component: {fileID: 199767795307503142}
   - component: {fileID: 114766296110313388}
   - component: {fileID: 114805259564903302}
-  - component: {fileID: 114771889635858810}
-  - component: {fileID: 114378693509216124}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -45,27 +43,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114378693509216124
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1843188667973738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 0
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &114766296110313388
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -77,38 +54,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e52b84cf69874238923ad38189008db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114771889635858810
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1843188667973738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 233
-    i1: 60
-    i2: 188
-    i3: 69
-    i4: 71
-    i5: 134
-    i6: 244
-    i7: 228
-    i8: 25
-    i9: 6
-    i10: 208
-    i11: 149
-    i12: 251
-    i13: 45
-    i14: 29
-    i15: 234
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114805259564903302
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -24,8 +24,6 @@ GameObject:
   - component: {fileID: 114950839395668554}
   - component: {fileID: 135552441470229292}
   - component: {fileID: 114116065121939054}
-  - component: {fileID: 114806009398931646}
-  - component: {fileID: 114601718848777266}
   m_Layer: 0
   m_Name: Plasma
   m_TagString: Untagged
@@ -164,59 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e52b84cf69874238923ad38189008db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114601718848777266
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1786046522610810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 0
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
---- !u!114 &114806009398931646
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1786046522610810}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 198
-    i1: 60
-    i2: 179
-    i3: 124
-    i4: 157
-    i5: 42
-    i6: 100
-    i7: 102
-    i8: 137
-    i9: 161
-    i10: 207
-    i11: 165
-    i12: 212
-    i13: 44
-    i14: 141
-    i15: 199
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114950839395668554
 MonoBehaviour:
   m_ObjectHideFlags: 1

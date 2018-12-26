@@ -37,9 +37,6 @@ public class LaserGun : Weapon
 
     public override void Fire()
     {
-//        audioSource.clip = audioBigCanon;
-//        audioSource.Play ();
-
         if (CheckWeaponReady())
         {
             var ray = new Ray(transform.position, transform.forward * _maxDistance);
@@ -51,14 +48,15 @@ public class LaserGun : Weapon
                 {
                     Vector3[] positions = {Vector3.zero, new Vector3(0, 0, hit.distance)};
                     _lineRenderer.SetPositions(positions);
-                    var networkIdentity = hit.collider.gameObject.GetComponent<NetworkIdentity>();
-                    if (networkIdentity == null || !_ownerName.Equals(networkIdentity.netId.ToString()))
+                    var hitName = hit.collider.gameObject.GetInstanceID().ToString();
+                    var canDamage = hit.collider.gameObject.CompareTag("Damagable");
+                    var notMe = !_ownerName.Equals(hitName);
+                    if (notMe && canDamage)
                     {
                         if (_explosionPrefab != null)
                         {
                             _explosion = PoolManager.GetObject(_explosionPrefab.name, hit.point,
                                 Quaternion.LookRotation(hit.normal));
-
 
                             if (_explosion != null)
                             {
@@ -70,7 +68,6 @@ public class LaserGun : Weapon
                             }
                         }
 
-                        Debug.Log(hit.collider.gameObject.tag);
                         hit.collider.gameObject.SendMessage("ReceiveDamage", this._damage);
                     }
                 }

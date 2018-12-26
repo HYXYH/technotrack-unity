@@ -13,13 +13,11 @@ public class BotGui : InGameGui {
 	private Text _healthBarText;
 	[SerializeField]
 	private float _maxGuiDistance = 50;
+	[SerializeField]
+	private float _minScale = 0.25f;
+
+
 	
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
 	void Update ()
 	{	
 		//todo: use observer camera
@@ -31,9 +29,13 @@ public class BotGui : InGameGui {
 			Vector2 screenPoint =
 				RectTransformUtility.WorldToScreenPoint(Camera.main, _owner.transform.position + _owner.transform.up * 4);
 			_healthBg.transform.position = screenPoint;
-			var dist = (_owner.transform.position - _observer.transform.position).magnitude;
+			var dist = (_owner.transform.position - Camera.main.transform.position).magnitude;
 			var scale = Mathf.Max(1 - dist / _maxGuiDistance, 0);
-			_healthBg.transform.localScale = new Vector3(scale, scale, scale);
+             			if (scale > 0 && scale < _minScale)
+             			{
+             				scale = _minScale;
+             			}
+			_healthBg.transform.localScale = new Vector3(scale, scale, 1);
 		}
 		else
 		{

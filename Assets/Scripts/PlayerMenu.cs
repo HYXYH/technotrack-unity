@@ -24,7 +24,10 @@ public class PlayerMenu : MonoBehaviour
 
 	public void ShowPlayButton()
 	{
-		_playButton.gameObject.SetActive(true);
+		if (_playButton != null)
+		{
+			_playButton.gameObject.SetActive(true);
+		}
 	}
 
 	public void StartGame()
@@ -32,8 +35,5 @@ public class PlayerMenu : MonoBehaviour
 		_playerCharacter.SetActive(true);
 		_playButton.gameObject.SetActive(false);
 	}
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }

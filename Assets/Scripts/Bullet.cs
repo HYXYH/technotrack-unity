@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Bullet : NetworkBehaviour {
+public class Bullet : MonoBehaviour {
 
 
 	[SerializeField]
@@ -17,7 +17,6 @@ public class Bullet : NetworkBehaviour {
 	private string _ownerName;
 	private Rigidbody _rigidbody;
 	private PoolObject _poolObject;
-	private MeshRenderer _meshRenderer;
 	private float _deadTime;
 
 
@@ -30,7 +29,6 @@ public class Bullet : NetworkBehaviour {
 	{
 		_rigidbody = GetComponent<Rigidbody>();
 		_poolObject = GetComponent<PoolObject>();
-		_meshRenderer = GetComponent<MeshRenderer>();
 	}
 
 	private void Update()
@@ -67,37 +65,33 @@ public class Bullet : NetworkBehaviour {
 
 	private void OnTriggerEnter(Collider other)
 	{
-		if (isServer)
-		{
-			var networkIdentity = other.gameObject.GetComponent<NetworkIdentity>();
-			if (networkIdentity == null || !_ownerName.Equals(networkIdentity.netId.ToString()))
-			{
-				Debug.Log(other.gameObject.tag);
 
+		var hitName = other.gameObject.GetInstanceID().ToString();
+		var canDamage = other.gameObject.CompareTag("Damagable");
+		var notMe = !_ownerName.Equals(hitName);
+		if (notMe && canDamage)
+			{
 				CreateExplosion();
 				other.gameObject.SendMessage("ReceiveDamage", _damage);
 				_rigidbody.velocity = Vector3.zero;
 				_poolObject.ReturnToPool();
 			}
-		}
 	}
 	
 	
 	private void OnCollisionEnter(Collision other)
 	{
-		if (isServer)
-		{
-			var networkIdentity = other.gameObject.GetComponent<NetworkIdentity>();
-			if (networkIdentity != null || !_ownerName.Equals(networkIdentity.netId.ToString()))
-			{
-				Debug.Log(other.gameObject.tag);
 
+		var hitName = other.collider.gameObject.GetInstanceID().ToString();
+		var canDamage = other.collider.gameObject.CompareTag("Damagable");
+		var notMe = !_ownerName.Equals(hitName);
+		if (notMe && canDamage)
+			{
 				CreateExplosion(other.contacts[0].point, Quaternion.LookRotation(other.contacts[0].normal));
 				other.gameObject.SendMessage("ReceiveDamage", _damage);
 				_rigidbody.velocity = Vector3.zero;
 				_poolObject.ReturnToPool();
 			}
-		}
 	}
 
 	private void OnEnable()

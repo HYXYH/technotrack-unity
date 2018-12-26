@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4792631824452956}
   - component: {fileID: 114604607777840212}
-  - component: {fileID: 114146114290939694}
   m_Layer: 0
   m_Name: PoolManager
   m_TagString: Untagged
@@ -41,38 +40,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114146114290939694
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1114525303881164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 61
-    i1: 66
-    i2: 133
-    i3: 160
-    i4: 19
-    i5: 244
-    i6: 212
-    i7: 86
-    i8: 10
-    i9: 114
-    i10: 9
-    i11: 154
-    i12: 56
-    i13: 33
-    i14: 220
-    i15: 66
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114604607777840212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,36 +51,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3140b00c756874785b140a3f37bf7a5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pools:
-  - name: LaserBeamBlueHit
-    Prefab: {fileID: 114721735378667114, guid: 71ac034e650134d8da512a1fbba7c969, type: 2}
-    Count: 0
-    PoolContainerObject: {fileID: 0}
-  - name: Missle
-    Prefab: {fileID: 114175226525866598, guid: 2739ab6c0b86c46db85bff739ce2f5b9, type: 2}
-    Count: 0
-    PoolContainerObject: {fileID: 0}
-  - name: PlasmaHit
-    Prefab: {fileID: 114721735378667114, guid: 503f780f8d4a84b059ae77f90fab23a1, type: 2}
-    Count: 0
-    PoolContainerObject: {fileID: 0}
-  - name: Plasma
-    Prefab: {fileID: 114116065121939054, guid: c63cb37c9d2a646689a1cfa5d42c8dc7, type: 2}
-    Count: 0
-    PoolContainerObject: {fileID: 0}
-  - name: angry_bot_destroyed
+  _pools:
+  - PoolName: angry_bot_destroyed
     Prefab: {fileID: 114977689168194986, guid: 857a249df30f048a9886df4867b67757, type: 2}
-    Count: 0
+    Count: 4
     PoolContainerObject: {fileID: 0}
-  - name: BotGui
+  - PoolName: BotGui
     Prefab: {fileID: 114717454528916676, guid: 222c0944379714bb1930862ebe5cf576, type: 2}
-    Count: 0
+    Count: 4
     PoolContainerObject: {fileID: 0}
-  - name: PlayerGui
-    Prefab: {fileID: 114585146787528300, guid: 3bde5400caee24d1ca31a456c0dbf1ee, type: 2}
-    Count: 0
-    PoolContainerObject: {fileID: 0}
-  - name: Explosion
+  - PoolName: Explosion
     Prefab: {fileID: 114766296110313388, guid: e93cbc454786f4e41906d095fb2d1dea, type: 2}
-    Count: 0
+    Count: 4
+    PoolContainerObject: {fileID: 0}
+  - PoolName: LaserBeamBlueHit
+    Prefab: {fileID: 114721735378667114, guid: 71ac034e650134d8da512a1fbba7c969, type: 2}
+    Count: 4
+    PoolContainerObject: {fileID: 0}
+  - PoolName: LaserBeamBlueHit
+    Prefab: {fileID: 114721735378667114, guid: 71ac034e650134d8da512a1fbba7c969, type: 2}
+    Count: 4
+    PoolContainerObject: {fileID: 0}
+  - PoolName: Missle
+    Prefab: {fileID: 114175226525866598, guid: 2739ab6c0b86c46db85bff739ce2f5b9, type: 2}
+    Count: 4
+    PoolContainerObject: {fileID: 0}
+  - PoolName: Plasma
+    Prefab: {fileID: 114116065121939054, guid: c63cb37c9d2a646689a1cfa5d42c8dc7, type: 2}
+    Count: 4
+    PoolContainerObject: {fileID: 0}
+  - PoolName: PlasmaHit
+    Prefab: {fileID: 114721735378667114, guid: 503f780f8d4a84b059ae77f90fab23a1, type: 2}
+    Count: 4
+    PoolContainerObject: {fileID: 0}
+  - PoolName: PlayerGui
+    Prefab: {fileID: 114585146787528300, guid: 3bde5400caee24d1ca31a456c0dbf1ee, type: 2}
+    Count: 1
     PoolContainerObject: {fileID: 0}

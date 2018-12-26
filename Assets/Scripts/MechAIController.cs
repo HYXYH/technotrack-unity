@@ -28,16 +28,24 @@ public class MechAIController : MonoBehaviour {
 	void Start () {
 		_mech = GetComponent<Mech>();
 		_mech.UseNavMesh = true;
-		_enemy = GameObject.FindWithTag("Player");
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
 		var distanceToPlayer = _attackTriggerRadius + 1;
-		if (_enemy == null)
+		if (_enemy == null || _enemy.activeInHierarchy == false)
 		{
-			_enemy = GameObject.FindWithTag("Player");
+			var enemies = GameObject.FindGameObjectsWithTag("Damagable");
+			if (enemies.Length == 1)
+			{
+				return;
+			}
+			_enemy = enemies[Random.Range(0, enemies.Length)];
+			while (_enemy.gameObject == gameObject)
+			{
+				_enemy = enemies[Random.Range(0, enemies.Length)];
+			}
 		}
 		else
 		{
@@ -117,4 +125,9 @@ public class MechAIController : MonoBehaviour {
 
 	}
 
+
+	private void OnDisable()
+	{
+		transform.parent.gameObject.SendMessage("Spawn", gameObject);
+	}
 }

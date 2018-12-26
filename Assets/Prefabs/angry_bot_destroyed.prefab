@@ -216,7 +216,6 @@ GameObject:
   - component: {fileID: 114977689168194986}
   - component: {fileID: 114523524385602862}
   - component: {fileID: 114589440520409608}
-  - component: {fileID: 114142027932022628}
   m_Layer: 0
   m_Name: angry_bot_destroyed
   m_TagString: Untagged
@@ -947,38 +946,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114142027932022628
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976574036889410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 133
-    i1: 122
-    i2: 36
-    i3: 157
-    i4: 243
-    i5: 15
-    i6: 4
-    i7: 138
-    i8: 152
-    i9: 134
-    i10: 223
-    i11: 72
-    i12: 103
-    i13: 182
-    i14: 119
-    i15: 87
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114523524385602862
 MonoBehaviour:
   m_ObjectHideFlags: 1

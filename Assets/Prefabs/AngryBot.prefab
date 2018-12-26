@@ -40,8 +40,6 @@ GameObject:
   - component: {fileID: 114999955334207486}
   - component: {fileID: 114060914114967858}
   - component: {fileID: 54328029941939482}
-  - component: {fileID: 114560010615969614}
-  - component: {fileID: 114272174995236130}
   m_Layer: 0
   m_Name: AngryBot
   m_TagString: Player
@@ -1046,59 +1044,6 @@ MonoBehaviour:
   _menuPrefab: {fileID: 1355938519529384, guid: d27a73410dd624a4e81b6b264a79f455,
     type: 2}
   _cameraPosition: {fileID: 1450940936035484}
---- !u!114 &114272174995236130
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022593227465606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 3
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
---- !u!114 &114560010615969614
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1022593227465606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 174
-    i1: 131
-    i2: 202
-    i3: 22
-    i4: 243
-    i5: 226
-    i6: 132
-    i7: 39
-    i8: 137
-    i9: 103
-    i10: 233
-    i11: 136
-    i12: 109
-    i13: 60
-    i14: 30
-    i15: 184
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 1
 --- !u!114 &114999955334207486
 MonoBehaviour:
   m_ObjectHideFlags: 1

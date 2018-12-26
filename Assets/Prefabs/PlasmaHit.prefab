@@ -23,8 +23,6 @@ GameObject:
   - component: {fileID: 199219285252802472}
   - component: {fileID: 114721735378667114}
   - component: {fileID: 114354219875663854}
-  - component: {fileID: 114339001320988904}
-  - component: {fileID: 114537360504217654}
   m_Layer: 0
   m_Name: PlasmaHit
   m_TagString: Untagged
@@ -45,38 +43,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114339001320988904
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1148250132263278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 80
-    i1: 63
-    i2: 120
-    i3: 15
-    i4: 141
-    i5: 74
-    i6: 132
-    i7: 176
-    i8: 89
-    i9: 174
-    i10: 119
-    i11: 249
-    i12: 15
-    i13: 171
-    i14: 35
-    i15: 161
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114354219875663854
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -88,27 +54,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c667bd5072ff24fbe8eb7bb5834c81c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114537360504217654
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1148250132263278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TransformSyncMode: 0
-  m_SendInterval: 0.1
-  m_SyncRotationAxis: 7
-  m_RotationSyncCompression: 0
-  m_SyncSpin: 0
-  m_MovementTheshold: 0.001
-  m_VelocityThreshold: 0.0001
-  m_SnapThreshold: 5
-  m_InterpolateRotation: 1
-  m_InterpolateMovement: 1
 --- !u!114 &114721735378667114
 MonoBehaviour:
   m_ObjectHideFlags: 1

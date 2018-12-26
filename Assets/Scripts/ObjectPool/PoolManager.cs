@@ -5,60 +5,58 @@ using System.Collections.Generic;
 
 public static class PoolManager
 {
-    private static PoolPart[] _pools;
+    private static PoolData[] _poolsData;
 
     [System.Serializable]
-    public struct PoolPart
+    public struct PoolData
     {
-        public string name; //имя префаба
-        public PoolObject Prefab; //сам префаб, как образец
-        public int Count; //количество объектов при инициализации пула
-        public ObjectPooling Ferula; //сам пул
+        public string PoolName; 
+        public PoolObject Prefab; 
+        public int Count; 
+        public Pool pool; //сам пул
         public GameObject PoolContainerObject;
     }
 
 
-    public static void Initialize(PoolPart[] newPools)
+    public static void Initialize(PoolData[] newPools)
     {
-        _pools = newPools; //заполняем информацию
+        _poolsData = newPools; 
         var objectsParent = new GameObject();
-        objectsParent.name = "DefaultPoolContainer"; //создаем на сцене объект Pool, чтобы не заслонять иерархию
-        for (int i = 0; i < _pools.Length; i++)
+        objectsParent.name = "DefaultPoolContainer"; 
+        for (var i = 0; i < _poolsData.Length; i++)
         {
-            if (_pools[i].Prefab != null)
+            if (_poolsData[i].Prefab != null)
             {
-                _pools[i].Ferula = new ObjectPooling(); //создаем свой пул для каждого префаба
-                if (_pools[i].PoolContainerObject == null)
+                _poolsData[i].pool = new Pool(); 
+                if (_poolsData[i].PoolContainerObject == null)
                 {
-                    _pools[i].PoolContainerObject = objectsParent;
+                    _poolsData[i].PoolContainerObject = objectsParent;
                 }
-                
-                _pools[i].Ferula.Initialize(_pools[i].Count, _pools[i].Prefab, _pools[i].PoolContainerObject.transform);
-//инициализируем пул заданным количество объектов
+                _poolsData[i].pool.Initialize(_poolsData[i].Count, _poolsData[i].Prefab, _poolsData[i].PoolContainerObject.transform);
             }
         }
     }
+    
 
     public static GameObject GetObject(string name, Vector3 position, Quaternion rotation)
     {
         GameObject result = null;
-        if (_pools != null)
+        if (_poolsData != null)
         {
-            for (int i = 0; i < _pools.Length; i++)
+            for (int i = 0; i < _poolsData.Length; i++)
             {
-                if (String.CompareOrdinal(_pools[i].name, name) == 0)
+                if (String.CompareOrdinal(_poolsData[i].PoolName, name) == 0)
                 {
-                    //если имя совпало с именем префаба пула
-                    result = _pools[i].Ferula.GetObject().gameObject; //дергаем объект из пула
+                    result = _poolsData[i].pool.GetObject().gameObject;
                     result.transform.position = position;
                     result.transform.rotation = rotation;
-                    result.SetActive(true); //выставляем координаты и активируем
+                    result.SetActive(true);
                     return result;
                 }
             }
         }
 
-        return result; //если такого объекта нет в пулах, вернет null
+        return result; 
     }
     
     public static GameObject GetObject(GameObject sample, Vector3 position, Quaternion rotation)

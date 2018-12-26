@@ -4,35 +4,36 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-
-	[SerializeField] private GameObject _playerPrefab;
-	[SerializeField] private GameObject _botPrefab;
-	[SerializeField] private GameObject[] _spawnPoints;
-
-	private List<GameObject> _myCharacters;
-	private BoxCollider _collider;
-	
-	
-	// Use this for initialization
-	void Start ()
-	{
-		_collider = GetComponent<BoxCollider>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+	private Queue<GameObject> _queue = new Queue<GameObject>();
+	private Queue<float> _timeQueue = new Queue<float>();
+	private GameObject _currentObj = null;
+	private float _currentTime;
 
 	public void Spawn(GameObject toSpawn)
 	{
-		StartCoroutine(timedSpawn(toSpawn));
+		_queue.Enqueue(toSpawn);
+		_timeQueue.Enqueue(Time.time + 2);
 	}
-	
-	
+
+	private void Update()
+	{
+		if (_currentObj == null && _queue.Count > 0)
+		{
+			_currentObj = _queue.Dequeue();
+			_currentTime = _timeQueue.Dequeue();
+		}
+
+		if (_currentTime > Time.time && _currentObj != null)
+		{
+			_currentObj.SetActive(true);
+			_currentObj = null;
+		}
+	}
+
+
 	public IEnumerator timedSpawn(GameObject toSpawn)
 	{
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(7);
 		gameObject.SetActive(true);
 	}
 

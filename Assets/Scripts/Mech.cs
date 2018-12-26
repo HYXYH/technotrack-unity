@@ -25,9 +25,6 @@ public class Mech : MonoBehaviour
 	private Rigidbody _rigidbody;
 	private NavMeshAgent _agent;
 	private InGameGui _inGameGui;
-	private PlayerMenu _spawner;
-	private NetworkIdentity _networkIdentity;
-
 
 	public bool UseNavMesh = false;
 
@@ -38,8 +35,6 @@ public class Mech : MonoBehaviour
 		_rigidbody = GetComponent<Rigidbody>();
 		_animator = GetComponentInChildren<Animator>();
 		_agent = gameObject.GetComponent<NavMeshAgent>();
-		_networkIdentity = GetComponent<NetworkIdentity>();
-		_spawner = GetComponentInParent<PlayerMenu>();
 
 		foreach (var weaponHolder in _weaponHolders)
 		{
@@ -53,7 +48,7 @@ public class Mech : MonoBehaviour
 				}
 
 				weaponHolder.SetWeapons(barrel.GetComponentsInChildren<Weapon>());
-				weaponHolder.InitWeapons(_networkIdentity.netId.ToString());
+				weaponHolder.InitWeapons(gameObject.GetInstanceID().ToString());
 			}
 		}
 	}
@@ -146,7 +141,6 @@ public class Mech : MonoBehaviour
 
 				_currentHealth = _maxHealth;
 				gameObject.SetActive(false);
-				_spawner.ShowPlayButton();
 			}
 		}
 	}

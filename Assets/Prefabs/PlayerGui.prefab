@@ -55,7 +55,6 @@ GameObject:
   - component: {fileID: 224796195034275766}
   - component: {fileID: 114585146787528300}
   - component: {fileID: 114042160824169718}
-  - component: {fileID: 114526144775966560}
   m_Layer: 5
   m_Name: PlayerGui
   m_TagString: Untagged
@@ -239,38 +238,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Plasma Gun
---- !u!114 &114526144775966560
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1184966797629096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SceneId:
-    m_Value: 0
-  m_AssetId:
-    i0: 59
-    i1: 222
-    i2: 84
-    i3: 0
-    i4: 202
-    i5: 238
-    i6: 36
-    i7: 209
-    i8: 202
-    i9: 49
-    i10: 164
-    i11: 86
-    i12: 192
-    i13: 219
-    i14: 241
-    i15: 238
-  m_ServerOnly: 0
-  m_LocalPlayerAuthority: 0
 --- !u!114 &114585146787528300
 MonoBehaviour:
   m_ObjectHideFlags: 1
