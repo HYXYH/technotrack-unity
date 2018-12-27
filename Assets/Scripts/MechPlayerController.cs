@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(Mech))]
-public class MechPlayerController : MonoBehaviour
+[RequireComponent(typeof(IMech))]
+public class MechPlayerController : NetworkBehaviour
 {
     [SerializeField] private GameObject _controlsGuiPrefab;
     [SerializeField] private GameObject _menuPrefab;
@@ -20,7 +20,12 @@ public class MechPlayerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        _mech = GetComponent<Mech>();
+        if (!isLocalPlayer)
+        {
+            Destroy(this);
+            return;
+        }
+        _mech = GetComponent<IMech>();
         _camera = Camera.main;
         
         _menuInstance = Instantiate(_menuPrefab);
@@ -34,6 +39,11 @@ public class MechPlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
+
         if (Input.GetAxis("Fire1") > 0)
         {
             _mech.Fire(0);
@@ -58,6 +68,10 @@ public class MechPlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         _mech.MoveForward(Input.GetAxis("Vertical"));
         _mech.RotateBot(Input.GetAxis("Horizontal"));
 
@@ -80,6 +94,10 @@ public class MechPlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        if (!isLocalPlayer)
+        {
+            return;
+        }
         if (_mech != null)
         {
             _camera.transform.parent = _cameraPosition.transform;
@@ -92,7 +110,10 @@ public class MechPlayerController : MonoBehaviour
 
     private void OnDisable()
     {
-        _playerMenu.ShowPlayButton();
+        if (isLocalPlayer)
+        {
+            _playerMenu.ShowPlayButton();
+        }
     }
 
     private void OnDrawGizmos()
