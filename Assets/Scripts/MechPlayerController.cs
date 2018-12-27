@@ -12,7 +12,7 @@ public class MechPlayerController : MonoBehaviour
 
     [SerializeField] private GameObject _cameraPosition;
 
-    private Mech _mech;
+    private IMech _mech;
     private Camera _camera;
     private GameObject _menuInstance;
     private PlayerMenu _playerMenu;

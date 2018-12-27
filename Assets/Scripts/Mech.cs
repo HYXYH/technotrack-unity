@@ -7,7 +7,7 @@ using UnityEngine.Experimental.Rendering;
 using UnityEngine.Networking;
 using Vector3 = UnityEngine.Vector3;
 
-public class Mech : MonoBehaviour
+public class Mech : MonoBehaviour, IMech
 {
 
 	[SerializeField] private float _walkSpeed;
@@ -30,7 +30,7 @@ public class Mech : MonoBehaviour
 
 
 	// Use this for initialization
-	void Start()
+	private void Start()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
 		_animator = GetComponentInChildren<Animator>();
@@ -54,7 +54,7 @@ public class Mech : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
+	private void Update()
 	{
 		if (UseNavMesh)
 		{
@@ -100,28 +100,34 @@ public class Mech : MonoBehaviour
 		return _turret.transform.forward;
 	}
 
-	public void Fire(int weaponId)
+	public void Fire(int holderId)
 	{
-		if (weaponId < _weaponHolders.Length)
+		if (holderId < _weaponHolders.Length)
 		{
-			_weaponHolders[weaponId].Fire();
-			_weaponHolders[weaponId].GetWeapon();
-			var weapon = _weaponHolders[weaponId].GetWeapon();
-			_inGameGui.SetWeaponInfo(weaponId, weapon.GetName(), weapon.GetAmmoInfo());
+			_weaponHolders[holderId].Fire();
+			_weaponHolders[holderId].GetWeapon();
+			var weapon = _weaponHolders[holderId].GetWeapon();
+			_inGameGui.SetWeaponInfo(holderId, weapon.GetName(), weapon.GetAmmoInfo());
 		}
+	}
+
+	public void UseWeapon(int holderId, int weaponId)
+	{
+		var holder = _weaponHolders[holderId];
+		holder.SetWeaponId(weaponId);
+		var weapon = holder.GetWeapon();
+		_inGameGui.SetWeaponInfo(weaponId, weapon.GetName(), weapon.GetAmmoInfo());
 	}
 
 	public void UseWeapon(int weaponId)
 	{
-		foreach (var holder in _weaponHolders)
+		for (var i=0; i < _weaponHolders.Length;  i++)
 		{
-			holder.SetWeaponId(weaponId);
-			var weapon = holder.GetWeapon();
-			_inGameGui.SetWeaponInfo(weaponId, weapon.GetName(), weapon.GetAmmoInfo());
+			UseWeapon(i, weaponId);
 		}
 	}
 
-	private void ReceiveDamage(float damage)
+	public void ReceiveDamage(float damage)
 	{
 		_currentHealth -= damage;
 		_inGameGui.SetHealthValue(_currentHealth / _maxHealth);
@@ -145,14 +151,6 @@ public class Mech : MonoBehaviour
 		}
 	}
 
-
-	public IEnumerator DeleteDestroyed()
-	{
-		yield return new WaitForSeconds(10);
-		Destroy(gameObject);
-	}
-
-
 	public void SetGui(InGameGui inGameGui)
 	{
 		if (_inGameGui != null)
@@ -164,63 +162,4 @@ public class Mech : MonoBehaviour
 		_inGameGui.SetHealthValue(_currentHealth / _maxHealth);
 	}
 
-}
-
-[System.Serializable]
-public class WeaponHolder
-{
-	[SerializeField] 
-	private GameObject _barrel;
-
-	[SerializeField]
-	public GameObject[] WeaponPrefabs;
-	private Weapon[] _weapons;
-	[SerializeField] 
-	private int _weaponId = 0;
-
-	public GameObject GetBarrel()
-	{
-		return _barrel;
-	}
-
-	public void InitWeapons(string ownerName)
-	{
-		foreach (var weapon in _weapons)
-		{
-			weapon.SetOwnerName(ownerName);
-		}
-	}
-
-	public void SetWeapons(Weapon[] weapons)
-	{
-		_weapons = weapons;
-	}
-
-	public void SetWeaponId(int weaponId)
-	{
-		if (weaponId < _weapons.Length)
-		{
-			_weaponId = weaponId;
-		}
-		else
-		{
-			Debug.Log("Weapon not found!");
-		}
-	}
-
-	public Weapon GetWeapon()
-	{
-		return _weapons[_weaponId];
-	}
-	
-
-	public void Fire()
-	{
-		if (_weaponId == -1 || _weaponId >= _weapons.Length)
-		{
-			Debug.Log("Weapon not installed!");
-			return;
-		}
-		_weapons[_weaponId].Fire();
-	}
 }
