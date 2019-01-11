@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -55,7 +56,10 @@ public class MechNet : NetworkBehaviour, IMech
 
 	public void MoveForward(float controllerValue)
 	{
-		CmdMoveForward(controllerValue);
+		if (Math.Abs(controllerValue) > 0.01)
+		{
+			CmdMoveForward(controllerValue);
+		}
 	}
 
 	[Command]
@@ -68,9 +72,12 @@ public class MechNet : NetworkBehaviour, IMech
 
 	public void RotateBot(float controllerValue)
 	{
-		CmdRotateBot(controllerValue);
+		if (Math.Abs(controllerValue) > 0.01)
+		{
+			CmdRotateBot(controllerValue);
+		}
 	}
-	
+
 	[Command]
 	public void CmdRotateBot(float controllerValue)
 	{
