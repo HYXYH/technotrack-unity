@@ -9,10 +9,13 @@ public class Spawner : MonoBehaviour
 	private GameObject _currentObj = null;
 	private float _currentSpawnTime;
 
+	[SerializeField]
+	private float botRespawnDelay = 10f;
+
 	public void Spawn(GameObject toSpawn)
 	{
 		_queue.Enqueue(toSpawn);
-		_timeQueue.Enqueue(Time.time + 2);
+		_timeQueue.Enqueue(Time.time + botRespawnDelay);
 	}
 
 	private void Update()
